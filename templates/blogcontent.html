@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Blogs</title>
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+        <meta content="Free Website Template" name="keywords">
+        <meta content="Free Website Template" name="description">
+
+        <!-- Favicon -->
+        <link href="img/favicon.ico" rel="icon">
+
+        <!-- Google Fonts -->
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:300;400;600;700;800&display=swap" rel="stylesheet">
+
+        <!-- Font Awesome -->
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+
+        <!-- Customized Bootstrap Stylesheet -->
+        <link href="/static/css/blog.css" rel="stylesheet">
+    </head>
+
+<body>
+  <div class="content">
+            <!-- Navbar Start -->
+            <div class="container p-0">
+                <nav class="navbar navbar-expand-lg bg-secondary navbar-dark">
+                    <a href="" class="navbar-brand d-block d-lg-none">Navigation</a>
+                    <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+                        <div class="navbar-nav m-rightcon">
+                           
+                                <!-- dropdown-toggle -->
+                                <a href="/blogs" class="nav-link  active" data-toggle="dropdown">Blogs</a>
+                               <a href="/contact" class="nav-item nav-link">Contact</a>
+                            <a href="/feedback" class="nav-item nav-link">feedback</a>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+            <!-- Navbar End -->
+
+            <!-- Page Header Start -->
+            {% if blog %}
+                
+            <!-- Blog List Start -->
+            {%for x in blog  %}
+            <div class="container py-5 px-2 bg-primary" style="border-bottom-width: 0px;border-bottom-style: solid;margin-bottom: -82px;border-top-width: 0px;border-top-style: solid;margin-top: -83px;">
+                <div class="row py-5 px-4">
+                    <div class="col-sm-6 text-center text-md-left">
+                        <h1 class="mb-3 mb-md-0 text-white text-uppercase font-weight-bold">{{x.title}}</h1>
+                    </div>
+                    <div class="col-sm-6 text-center text-md-right">
+                        <div class="d-inline-flex pt-2">
+                            <h4 class="m-0 text-white"><a class="text-white" href="/blogs">Home</a></h4>
+                            <h4 class="m-0 text-white px-2">/</h4>
+                            <h4 class="m-0 text-white">{{x.title}}</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Page Header End -->
+        
+                <div class="container bg-white pt-5">
+                    <div class="aligncenter">
+                    <div class="row blog-item px-3   pb-5">
+                        <!-- <div class="col-md-5"> -->
+                            <img class="img-fluid mb-4 mb-md-0"  src="{{ url_for('uploaded_file', filename=x.image) }}" alt="{{x.title}}">
+                        </div>
+                        
+                        <!-- <div class="col-md-7"> -->
+                            <h3 class="mt-md-4 px-md-3 mb-2 py-2 bg-white font-weight-bold">{{x.title}}</h3>
+                        
+                            <div class="d-flex mb-3">
+                                <small class="mr-2 text-muted"><i class="fa fa-calendar-alt"></i> {{x.date}}</small>
+                        
+                                <small class="mr-2 text-muted"><i class="fa fa-folder"></i> {{x.title}}</small>
+                                <small class="mr-2 text-muted"><i class="fa fa-comments"></i> {{x.writer}} Comments</small> 
+                            </div>
+                            <hr>
+                            <p>
+                                {{x.shortcontect}}
+                                </p>
+
+                                <pre class="blogcontent">{{x.content}}</pre>
+                                
+                                <div id="comment_section">
+                                    <hr>
+                                    <!-- <h1>Leave a Comment</h1> -->
+                                    
+                                    <div id="comment-form">
+                                       
+                                        
+                                        <form action="/comment" method="POST" onsubmit="rand5()">
+                                            <input type="text" name="blogid" value="{{x.blog_id }}" hidden>
+                                            <input type="text" name="comid"  id="rand5d" hidden>
+                                            <input type="text" name="date"  id="date" hidden>
+                                            <input type="text" name="time"  id="time" hidden>
+                                            <label for="comment" class="leftmod">Comment:</label>
+                                            <textarea id="comment" name="comment" cols="10" style="resize: none;width: 100%; height: 100px;" placeholder=" @ {{x.title}}"  required></textarea>
+                                            <p id="char-count">Characters remaining: 300</p>
+                                            <button style="float: left; margin-right: 5px;" id="reset-button" type="reset">Cancle</button>
+                                            <button style="float: left;" type="submit">Submit</button>
+                                        </form>
+                                        
+                                    </div></div>
+                                    
+
+<div></div>
+
+<style>
+    /* Style for the comment box */
+    #comment-box {
+        border: 1px solid #ccc;
+        padding: 10px;
+        margin: 10px;
+        width: 300px;
+    }
+</style>
+
+<script src="/static/js/random.js"></script>
+<script src="/static/js/date.js"></script>
+
+
+                                    <script src="/static/js/comment.js"> </script>
+                                    <!-- In this updated code, I've added the maxlength attribute to the <textarea>, which specifies the maximum number of characters allowed. The JavaScript code has been modified to truncate any excess characters that users might try to enter beyond the limit. This way, it enforces the character limit and prevents further input once the limit is reached.
+                                    
+                                     -->
+                                     <div style="margin-top: 10%; text-align: left; align-content: left;" >
+                                    
+                                     <div  >
+                                        <h4>Comments:</h4>
+                                        <br>
+
+                                            {% for u in user|reverse %}
+                                                <div>
+                                                    <img src="/static/img/LOGO IIMPACT.jpg" alt="img" width="50px">
+                                                    <strong>{{ u.fname }} {{u.lname}} <small>{{ u.date }} / {{ u.time }}</small></strong>
+                                                    <pre style="margin-left: 100px;">{{ u.comment }}</pre>
+                                                </div>
+
+                                                
+                                           
+                                        {% endfor %}
+                                    </div> 
+                                     <br>
+                                     <div style="float: left;">
+                                            
+                                    
+<!-- Comment session here  -->
+
+
+                       
+<!-- 
+
+<div id="comment_section">
+    <hr>
+    
+    
+    <div id="comment-form">
+
+        </div>
+        </div>
+       
+
+            
+
+
+
+
+                                </div>
+                                
+                            </div>
+                            
+
+
+                                    <style>
+                                        /* Styling for the container */
+                                        .containers {
+                                            width: 100%;
+                                            /* height: 200px; */
+                                            /* border: 1px solid #ccc; */
+                                            overflow: auto; /* This enables scrolling */
+                                        }
+                                
+                                        /* Styling for the content */
+                                        .contentss {
+                                            width: 100%;
+                                        }
+                                    </style>
+                                    <hr>
+                                    
+                               <!-- <br><br>     
+                               <br><br>     
+                               <br><br>     
+                               <br><br>     
+                               <br><br>     
+                               <br><br>      -->
+                            <a class="btn btn-link p-0" href="/blogs">Go back <i class="fa fa-angle-left"></i></a>
+                        </div>
+                    </div>
+                    </div>
+
+
+                        {%endfor%}
+                        {% else %}
+
+                        <div class="container bg-white pt-5">
+                            <h1>No blogs available.</h1>
+                            <div class="row blog-item px-3 pb-5">
+                            </div>
+                        </div>
+                        
+                        {% endif %}
+                        
+                    <div class="row px-3 pb-5">
+                        <nav aria-label="Page navigation">
+                            <hr>
+                          
+                        </nav>
+                    </div>
+                   
+                <!-- Blog List End -->
+                
+                
+                <!-- Footer Start -->
+                <div class="container py-4 bg-secondary text-center">
+                    <p class="m-0 text-white">
+                        &copy; <a class="text-white font-weight-bold" href="/home">impactmass.com</a>. All Rights Reserved. Designed by <a class="text-white font-weight-bold" href="https://htmlcodex.com">HTML Codex</a>
+                    </p>
+                </div>
+                <!-- Footer End -->
+            </div>
+        </div>
+        
+        <style>
+            .blogcontent{
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                color: black;
+                width: 100%;
+            }
+        </style>
+
+
+        <!-- Back to Top -->
+        <a href="#" class="back-to-top"><i class="fa fa-angle-double-up"></i></a>
+        
+        <!-- JavaScript Libraries -->
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+        <script src="/static/lib/easing/easing.min.js"></script>
+        <script src="/static/lib/waypoints/waypoints.min.js"></script>
+
+        <!-- Contact Javascript File -->
+        <script src="/static/mail/jqBootstrapValidation.min.js"></script>
+        <script src="/static/mail/contact.js"></script>
+
+        <!-- Template Javascript -->
+        <script src="/static/js/blog.js"></script>
+    </body>
+</html>

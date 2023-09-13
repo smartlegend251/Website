@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>BlogPost</title>
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+        <meta content="Free Website Template" name="keywords">
+        <meta content="Free Website Template" name="description">
+
+        <!-- Favicon -->
+        <link href="img/favicon.ico" rel="icon">
+
+        <!-- Google Fonts -->
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:300;400;600;700;800&display=swap" rel="stylesheet">
+
+        <!-- Font Awesome -->
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+
+        <!-- Customized Bootstrap Stylesheet -->
+        <link href="/static/css/blog.css" rel="stylesheet">
+    </head>
+
+<body>
+  <div class="content">
+            <!-- Navbar Start -->
+            <div class="container p-0">
+                <nav class="navbar navbar-expand-lg bg-secondary navbar-dark">
+                    <a href="" class="navbar-brand d-block d-lg-none">Navigation</a>
+                    <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+                        <div class="navbar-nav m-right">
+                           
+                                <!-- dropdown-toggle -->
+                                <a href="/blogs" class="nav-link  ">Blogs</a>
+                               <a href="/contact" class="nav-item nav-link">Contact</a>
+                            <a href="/feedback" class="nav-item nav-link ">Feedback</a>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+            <!-- Navbar End -->
+
+            <!-- Page Header Start -->
+            <div class="container py-5 px-2 bg-primary" style="border-bottom-width: 0px;border-bottom-style: solid;margin-bottom: -82px;border-top-width: 0px;border-top-style: solid;margin-top: -83px;">
+                <div class="row py-5 px-4">
+                    <div class="col-sm-6 text-center text-md-left">
+                        <h1 class="mb-3 mb-md-0 text-white text-uppercase font-weight-bold">Blog Post</h1>
+                    </div>
+                    <div class="col-sm-6 text-center text-md-right">
+                        <div class="d-inline-flex pt-2">
+                            <h4 class="m-0 text-white"><a class="text-white" href="/blogs">Home</a></h4>
+                            <h4 class="m-0 text-white px-2">/</h4>
+                            <h4 class="m-0 text-white">Blogpost</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Page Header End -->
+                
+                
+                <!-- Blog List Start -->
+                
+                <div class="container bg-white pt-5">
+                    
+                    <div class="row blog-item px-3 pb-5">
+                        <div class="con">
+                            <!-- <h1>Feedback Form</h1> -->
+                            <form action="/blogpost" method="post" enctype="multipart/form-data">
+                              <!-- <label for="name">Name:</label>
+                              <input type="text" id="name" name="name" required>
+                               -->
+                              <label for="image">Image</label>
+                              <input type="file" id="image" name="image" required>
+<br>
+                              <label for="title">Title:</label>
+                              <input type="text" id="title" name="title" required>
+
+                              <label for="sh">ShortNote</label>
+                              <input type="text" id="sh" name="shortcontect" required>
+
+
+                              <label for="content">Content:</label>
+                              <textarea id="content" name="content" required></textarea>
+
+                              <input type="text" name="date" id="date" readonly hidden>
+                              <input type="text" name="time" id="time"readonly hidden>
+                              
+                              
+                              <button type="submit">Post</button>
+                            </form>
+                          </div>
+                    </div>
+
+
+<!--                         
+                    <div class="row px-3 pb-5">
+                        <nav aria-label="Page navigation">
+                          
+                        </nav>
+                    </div>
+                     -->
+                <!-- Blog List End -->
+                
+                
+                <!-- Footer Start -->
+                <div class="container py-4 bg-secondary text-center">
+                    <p class="m-0 text-white">
+                        &copy; <a class="text-white font-weight-bold" href="/home">impactmass.com</a>. All Rights Reserved. Designed by <a class="text-white font-weight-bold" href="https://htmlcodex.com">HTML Codex</a>
+                    </p>
+                </div>
+                <!-- Footer End -->
+            </div>
+        </div>
+        
+        <!-- Back to Top -->
+        <a href="#" class="back-to-top"><i class="fa fa-angle-double-up"></i></a>
+        
+        <!-- JavaScript Libraries -->
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+        <script src="/static/lib/easing/easing.min.js"></script>
+        <script src="/static/lib/waypoints/waypoints.min.js"></script>
+
+        <!-- Contact Javascript File -->
+        <script src="/static/mail/jqBootstrapValidation.min.js"></script>
+        <script src="/static/mail/contact.js"></script>
+
+        <!-- Template Javascript -->
+        <script src="/static/js/blog.js"></script>
+    </body>
+    <script src="/static/js/date.js"></script>
+</html>
